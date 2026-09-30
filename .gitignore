@@ -1,0 +1,152 @@
+# ============================================================
+# Flutter / Dart
+# ============================================================
+
+# Dart tool cache
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Pub
+.pub-cache/
+.pub/
+pubspec.lock   # keep this commented out if you want reproducible builds
+               # across CI – uncomment to ignore it for app projects
+
+# Build outputs
+/build/
+/coverage/
+
+# Widget Preview
+.widget_preview/
+
+# Dart generated files
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+
+# ============================================================
+# Android
+# ============================================================
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+
+# Release keystores – NEVER commit these
+*.jks
+*.keystore
+key.properties
+
+# Android Studio build artefacts
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+
+# ============================================================
+# iOS / macOS
+# ============================================================
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/DerivedData/
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata
+**/ios/.generated/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+**/macos/**/Pods/
+**/macos/**/.symlinks/
+**/macos/Flutter/ephemeral/
+**/macos/Flutter/GeneratedPluginRegistrant.*
+
+# ============================================================
+# Linux / Windows desktop
+# ============================================================
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+
+# ============================================================
+# Web
+# ============================================================
+# (no special ignores needed beyond /build/)
+
+# ============================================================
+# IDEs & editors
+# ============================================================
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code – keep launch.json / settings if you want shared config
+.vscode/
+# Uncomment the lines below to keep shared VS Code settings:
+# !.vscode/settings.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
+
+# ============================================================
+# OS artefacts
+# ============================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ============================================================
+# Misc
+# ============================================================
+*.class
+*.log
+*.pyc
+*.swp
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# Symbolication
+app.*.symbols
+
+# Obfuscation map
+app.*.map.json
+
+# Environment / secrets – NEVER commit these
+.env
+.env.*
+*.secret
+secrets.dart
