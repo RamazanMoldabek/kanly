@@ -3,10 +3,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/auth/auth_gate.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // Вызываем runApp незамедлительно, чтобы браузер сразу отрендерил интерфейс
   runApp(const KanlyApp());
 }
 
@@ -18,13 +18,7 @@ class KanlyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kanly',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.themeData,
       home: const AppInitializer(),
     );
   }
@@ -47,7 +41,6 @@ class _AppInitializerState extends State<AppInitializer> {
   }
 
   Future<void> _initializeApp() async {
-    // 1. Загрузка переменных окружения
     try {
       await dotenv.load(fileName: '.env');
     } catch (e) {
@@ -61,7 +54,6 @@ class _AppInitializerState extends State<AppInitializer> {
         dotenv.env['SUPABASE_ANON_KEY'] ??
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNnbW1rcmJld2Vnd2ZpdWJpanR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3NjMxMzIsImV4cCI6MjEwNjMzOTEzMn0.O6--3x9SYt-BFbEak-HQH6KAJAIJdJ90BmytbNHQSF8';
 
-    // 2. Инициализация Supabase (если ещё не инициализирован)
     try {
       Supabase.instance;
     } catch (_) {
@@ -75,33 +67,30 @@ class _AppInitializerState extends State<AppInitializer> {
       future: _initFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            backgroundColor: Colors.indigo.shade900,
+          return const Scaffold(
+            backgroundColor: AppTheme.background,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Icon(
-                      Icons.view_kanban_rounded,
-                      size: 48,
-                      color: Colors.indigo,
-                    ),
+                  Icon(
+                    Icons.view_kanban_outlined,
+                    size: 52,
+                    color: AppTheme.textPrimary,
                   ),
-                  const SizedBox(height: 24),
-                  const CircularProgressIndicator(color: Colors.white),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Загрузка Kanly...',
+                  SizedBox(height: 16),
+                  CircularProgressIndicator(
+                    color: AppTheme.textPrimary,
+                    strokeWidth: 2,
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    'Kanly',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppTheme.textPrimary,
                       fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.1,
                     ),
                   ),
                 ],
