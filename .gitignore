@@ -1,29 +1,34 @@
 # ============================================================
+# Environment / Secrets (CRITICAL SECURITY)
+# ============================================================
+.env
+.env.*
+!.env.example
+*.secret
+secrets.dart
+
+# ============================================================
 # Flutter / Dart
 # ============================================================
-
-# Dart tool cache
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-
-# Pub
+.packages
 .pub-cache/
 .pub/
-pubspec.lock   # keep this commented out if you want reproducible builds
-               # across CI – uncomment to ignore it for app projects
 
 # Build outputs
 /build/
 /coverage/
 
-# Widget Preview
-.widget_preview/
-
 # Dart generated files
 *.g.dart
 *.freezed.dart
 *.mocks.dart
+*.generated.dart
+
+# Widget Preview
+.widget_preview/
 
 # ============================================================
 # Android
@@ -78,75 +83,42 @@ key.properties
 **/macos/Flutter/GeneratedPluginRegistrant.*
 
 # ============================================================
-# Linux / Windows desktop
+# Linux / Windows Desktop
 # ============================================================
 **/linux/flutter/ephemeral/
 **/windows/flutter/ephemeral/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.user
+*.suo
+*.sln.docstates
 
 # ============================================================
-# Web
+# IDEs & Editors
 # ============================================================
-# (no special ignores needed beyond /build/)
-
-# ============================================================
-# IDEs & editors
-# ============================================================
-
-# IntelliJ / Android Studio
 *.iml
 *.ipr
 *.iws
 .idea/
-
-# VS Code – keep launch.json / settings if you want shared config
 .vscode/
-# Uncomment the lines below to keep shared VS Code settings:
-# !.vscode/settings.json
-# !.vscode/launch.json
-# !.vscode/extensions.json
 
 # ============================================================
-# OS artefacts
+# OS Artefacts & Temp Files
 # ============================================================
-
-# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Windows
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
-
-# Linux
 *~
-
-# ============================================================
-# Misc
-# ============================================================
-*.class
+*.tmp
+*.bak
 *.log
-*.pyc
-*.swp
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
 
-# Symbolication
+# Symbolication & Obfuscation
 app.*.symbols
-
-# Obfuscation map
 app.*.map.json
-
-# Environment / secrets – NEVER commit these
-.env
-.env.*
-*.secret
-secrets.dart
