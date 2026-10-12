@@ -46,13 +46,9 @@ class BoardService extends ChangeNotifier {
 
     // 2. Создаем дефолтные колонки для новой доски (To Do, In Progress, Done)
     final defaultColumns = [
-      {'board_id': newBoard.id, 'title': 'To Do 📋', 'order_index': 1000.0},
-      {
-        'board_id': newBoard.id,
-        'title': 'In Progress ⏳',
-        'order_index': 2000.0,
-      },
-      {'board_id': newBoard.id, 'title': 'Done ✅', 'order_index': 3000.0},
+      {'board_id': newBoard.id, 'title': 'To Do', 'order_index': 1000.0},
+      {'board_id': newBoard.id, 'title': 'In Progress', 'order_index': 2000.0},
+      {'board_id': newBoard.id, 'title': 'Done', 'order_index': 3000.0},
     ];
 
     await _supabase.from('columns').insert(defaultColumns);

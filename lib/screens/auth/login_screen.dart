@@ -229,7 +229,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           },
                           child: const Text(
-                            'Создать в 1 клик',
+                            'Зарегистрироваться',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppTheme.textPrimary,

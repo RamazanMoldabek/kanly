@@ -272,7 +272,12 @@ class _KanbanBoardScreenState extends State<KanbanBoardScreen> {
         titleSpacing: 0,
         title: Row(
           children: [
-            const Text('📌 ', style: TextStyle(fontSize: 18)),
+            const Icon(
+              Icons.dashboard_outlined,
+              size: 20,
+              color: AppTheme.textPrimary,
+            ),
+            const SizedBox(width: 8),
             Text(
               widget.board.title,
               style: const TextStyle(
