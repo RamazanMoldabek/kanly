@@ -6,7 +6,7 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const KanlyApp());
 
-    // Verify that our config check text is present.
-    expect(find.text('Env & Supabase Configured!'), findsOneWidget);
+    // Verify that Kanly branding is present.
+    expect(find.text('Kanly'), findsOneWidget);
   });
 }
