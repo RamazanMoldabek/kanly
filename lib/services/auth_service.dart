@@ -42,4 +42,20 @@ class AuthService extends ChangeNotifier {
     await _supabase.auth.signOut();
     notifyListeners();
   }
+
+  /// Update Full Name
+  Future<void> updateFullName(String fullName) async {
+    final userId = currentUser?.id;
+    if (userId == null) throw Exception('Пользователь не авторизован');
+
+    await _supabase
+        .from('profiles')
+        .update({
+          'full_name': fullName.trim(),
+          'updated_at': DateTime.now().toIso8601String(),
+        })
+        .eq('id', userId);
+
+    notifyListeners();
+  }
 }

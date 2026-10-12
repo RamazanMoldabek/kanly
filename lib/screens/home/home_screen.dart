@@ -6,6 +6,7 @@ import '../../services/auth_service.dart';
 import '../../services/board_service.dart';
 import '../../theme/app_theme.dart';
 import '../board/kanban_board_screen.dart';
+import '../profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -86,7 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               title: const Row(
                 children: [
-                  Text('📌 ', style: TextStyle(fontSize: 18)),
+                  Icon(
+                    Icons.space_dashboard_outlined,
+                    size: 20,
+                    color: AppTheme.textPrimary,
+                  ),
+                  SizedBox(width: 8),
                   Text(
                     'Новый проект',
                     style: TextStyle(
@@ -252,7 +258,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Row(
           children: [
-            Text('📖 ', style: TextStyle(fontSize: 18)),
+            Icon(
+              Icons.view_kanban_outlined,
+              size: 22,
+              color: AppTheme.textPrimary,
+            ),
+            SizedBox(width: 8),
             Text(
               'Kanly Workspace',
               style: TextStyle(
@@ -263,6 +274,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.person_outline, size: 22),
+            tooltip: 'Профиль',
+            onPressed: () {
+              Navigator.of(context)
+                  .push(
+                    MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                  )
+                  .then((_) => _loadData());
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.logout_rounded, size: 20),
             tooltip: 'Выйти',
@@ -293,57 +315,74 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppTheme.sidebarBg,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: AppTheme.border),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 42,
-                      height: 42,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppTheme.tagGrayBg,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        fullName.isNotEmpty ? fullName[0].toUpperCase() : 'U',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.textPrimary,
+              InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(
+                        MaterialPageRoute(
+                          builder: (_) => const ProfileScreen(),
+                        ),
+                      )
+                      .then((_) => _loadData());
+                },
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppTheme.sidebarBg,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: AppTheme.border),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 42,
+                        height: 42,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppTheme.tagGrayBg,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          fullName.isNotEmpty ? fullName[0].toUpperCase() : 'U',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.textPrimary,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 14),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            fullName,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: AppTheme.textPrimary,
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              fullName,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: AppTheme.textPrimary,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            email,
-                            style: const TextStyle(
-                              color: AppTheme.textSecondary,
-                              fontSize: 12,
+                            const SizedBox(height: 2),
+                            Text(
+                              email,
+                              style: const TextStyle(
+                                color: AppTheme.textSecondary,
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      const Icon(
+                        Icons.chevron_right,
+                        size: 20,
+                        color: AppTheme.textSecondary,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 28),
@@ -436,9 +475,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 16,
                           vertical: 6,
                         ),
-                        leading: const Text(
-                          '📌',
-                          style: TextStyle(fontSize: 20),
+                        leading: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: AppTheme.tagGrayBg,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Icon(
+                            Icons.dashboard_outlined,
+                            size: 18,
+                            color: AppTheme.textPrimary,
+                          ),
                         ),
                         title: Text(
                           board.title,
